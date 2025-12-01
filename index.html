@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nattawoot Ouanlam - Executive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --accent-gold: #fbbf24;
+            --accent-blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-sub: #cbd5e1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            font-family: 'Sarabun', sans-serif;
+            color: var(--text-main);
+            overflow: hidden;
+            font-size: 18px; /* Base font size increased */
+        }
+
+        /* --- Background Effects --- */
+        #bg-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 50% 10%, #1e293b 0%, #020617 90%);
+        }
+        .world-grid {
+            position: absolute; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+            perspective: 500px;
+            transform-style: preserve-3d;
+            animation: moveGrid 50s linear infinite;
+            opacity: 0.3;
+        }
+        @keyframes moveGrid { from { background-position: 0 0; } to { background-position: 0 1000px; } }
+
+        /* --- Slide Container --- */
+        .slide-wrapper {
+            position: relative; width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .slide {
+            position: absolute;
+            width: 95%; max-width: 1800px; height: 90vh; /* Bigger container */
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.7);
+            display: none; opacity: 0; transform: scale(0.95);
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding: 50px; box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .slide.active { display: block; opacity: 1; transform: scale(1); }
+        .slide::-webkit-scrollbar { width: 8px; }
+        .slide::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+
+        /* --- Typography (Upscaled) --- */
+        .text-en {
+            font-size: 1.5rem; color: var(--text-main); font-weight: 600; margin-bottom: 6px; line-height: 1.4;
+        }
+        .text-th {
+            font-size: 1.25rem; color: var(--text-sub); margin-bottom: 25px; font-weight: 400; line-height: 1.5;
+        }
+        .job-details li { margin-bottom: 20px; position: relative; padding-left: 25px; list-style: none; }
+        .job-details li::before {
+            content: "•"; color: var(--accent-gold); font-size: 24px; position: absolute; left: 0; top: -2px;
+        }
+
+        /* --- Layout Components --- */
+        .header-row {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 25px; margin-bottom: 40px;
+        }
+        .role-badge {
+            font-family: 'Rajdhani'; font-weight: 700; color: var(--accent-gold);
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem;
+        }
+        .main-title { font-size: 2.8rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 20px; line-height: 1; }
+        
+        /* Company/Uni Logo Container */
+        .logo-box {
+            background: white; padding: 10px 20px; border-radius: 8px; display: inline-flex; align-items: center; height: 60px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .logo-img { height: 100%; object-fit: contain; }
+
+        /* Business Context Box */
+        .biz-context {
+            background: rgba(14, 165, 233, 0.15); border-left: 6px solid var(--accent-blue);
+            padding: 20px 25px; border-radius: 8px; margin-bottom: 40px; display: flex; align-items: center; gap: 25px;
+        }
+        .biz-icon { font-size: 32px; color: var(--accent-blue); min-width: 50px; text-align: center; }
+
+        /* Content Grid */
+        .split-grid { display: grid; grid-template-columns: 400px 1fr; gap: 60px; height: 100%; }
+        .left-col { border-right: 2px solid rgba(255,255,255,0.1); padding-right: 40px; display: flex; flex-direction: column; gap: 30px; }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08); transition: 0.3s;
+        }
+        .stat-card:hover { border-color: var(--accent-gold); transform: translateX(10px); background: rgba(255,255,255,0.08); }
+        .stat-val { font-family: 'Rajdhani'; font-size: 4rem; font-weight: 700; color: var(--accent-blue); display: block; line-height: 1; margin-bottom: 5px; text-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+        .stat-lbl { font-size: 1rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+        /* --- Org Chart & Info --- */
+        .org-chart { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
+        .org-node {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent-blue); padding: 20px 35px; border-radius: 12px;
+            text-align: center; min-width: 180px; position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        .org-line { width: 3px; height: 40px; background: rgba(255,255,255,0.3); margin: 0 auto; }
+        .org-row { display: flex; gap: 40px; justify-content: center; position: relative; }
+        .org-connector {
+            position: absolute; top: -20px; left: 20%; right: 20%; height: 20px;
+            border: 3px solid rgba(255,255,255,0.3); border-bottom: none; border-radius: 8px 8px 0 0;
+        }
+
+        /* --- Hero Contact --- */
+        .hero-container {
+            display: flex; align-items: center; justify-content: center; gap: 80px; height: 100%;
+        }
+        .hero-photo-box {
+            position: relative; width: 480px; height: 480px;
+        }
+        .hero-photo {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+            border: 8px solid var(--accent-gold); box-shadow: 0 0 100px rgba(245, 158, 11, 0.3);
+        }
+        .contact-list { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .contact-pill {
+            background: rgba(255,255,255,0.05); padding: 20px 30px; border-radius: 60px;
+            display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .contact-pill:hover { background: var(--accent-blue); color: #000; border-color: var(--accent-blue); box-shadow: 0 0 30px rgba(14, 165, 233, 0.4); }
+        .contact-pill:hover .text-th { color: #1e293b; }
+
+        /* --- Controls --- */
+        .nav-controls {
+            position: absolute; bottom: 30px; display: flex; gap: 30px;
+            background: rgba(0,0,0,0.8); padding: 15px 40px; border-radius: 40px;
+            z-index: 100; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .nav-btn {
+            background: none; border: none; color: white; font-size: 32px; cursor: pointer; transition: 0.2s;
+        }
+        .nav-btn:hover { color: var(--accent-gold); transform: scale(1.2); }
+        #page-num { font-size: 24px; font-weight: bold; font-family: 'Rajdhani'; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .split-grid { grid-template-columns: 1fr; gap: 40px; }
+            .left-col { border-right: none; border-bottom: 2px solid rgba(255,255,255,0.1); padding-right: 0; padding-bottom: 30px; flex-direction: row; flex-wrap: wrap; }
+            .stat-card { flex: 1; min-width: 200px; }
+            .hero-container { flex-direction: column; gap: 40px; }
+            .hero-photo-box { width: 250px; height: 250px; }
+            .main-title { font-size: 2rem; }
+            .stat-val { font-size: 3rem; }
+            .contact-list { grid-template-columns: 1fr; }
+            .slide { padding: 30px; height: 95vh; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="bg-canvas"><div class="world-grid"></div></div>
+
+<div class="slide-wrapper">
+
+    <!-- SLIDE 1: INTRO -->
+    <div class="slide active">
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+            <div style="width:280px; height:280px; border-radius:50%; overflow:hidden; border:6px solid var(--accent-gold); margin-bottom:40px; box-shadow: 0 0 60px rgba(245,158,11,0.4);">
+                <img src="https://img5.pic.in.th/file/secure-sv1/548292645_10233190380276143_2879789966387876379_n---Copy.jpg" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <h1 style="font-size:5rem; margin:0; line-height:1; font-weight: 800; letter-spacing: -2px;">NATTAWOOT OUANLAM</h1>
+            <div style="font-family:'Rajdhani'; font-size:2.5rem; color:var(--accent-blue); letter-spacing:8px; margin-top:15px; font-weight: 700;">PICKING DEPARTMENT MANAGER</div>
+            <div style="width:150px; height:6px; background:var(--accent-gold); margin:40px 0;"></div>
+            
+            <div style="max-width:1000px;">
+                <div class="text-en" style="font-size:2rem; font-weight: 400;">
+                    Strategic Warehouse Leader managing 450+ staff with a proven track record of 8.4M THB cost savings and 38% productivity growth.
+                </div>
+                <div class="text-th" style="font-size:1.6rem; color:var(--text-sub); margin-top: 10px;">
+                    ผู้บริหารงานคลังสินค้าเชิงกลยุทธ์ที่มีประสบการณ์บริหารทีมงานกว่า 450 คน พร้อมผลงานความสำเร็จในการลดต้นทุน 8.4 ล้านบาท และเพิ่มผลผลิต 38%
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: EDUCATION -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">ACADEMIC BACKGROUND</div>
+                <div class="main-title">
+                    <i class="fa-solid fa-graduation-cap"></i> Education / การศึกษา
+                </div>
+            </div>
+            <div class="role-badge">2014 - 2018</div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card">
+                    <span class="stat-val">3.09</span>
+                    <span class="stat-lbl">BACHELOR GPA</span>
+                </div>
+                <div class="stat-card" style="border-color:var(--accent-gold);">
+                    <span class="stat-val">BEST</span>
+                    <span class="stat-lbl">THESIS AWARD</span>
+                </div>
+            </div>
+            
+            <div>
+                <!-- Degree 1 -->
+                <div style="display:flex; gap:30px; margin-bottom:50px; align-items: flex-start;">
+                    <div class="logo-box" style="width:220px; justify-content:center; flex-shrink: 0; height: 80px;">
+                        <img src="https://logo.clearbit.com/neu.ac.th" class="logo-img" alt="NEU Logo">
+                        <i class="fa-solid fa-microchip" style="color:#333; font-size:32px; margin-left:15px;"></i>
+                    </div>
+                    <div>
+                        <div class="text-en" style="font-size:2rem; color:var(--accent-blue);">Bachelor's Degree in Engineering (2018)</div>
+                        <div class="text-th" style="font-size:1.4rem;">ปริญญาตรี วิศวกรรมศาสตร์ (สารสนเทศ)</div>
+                        <ul class="job-details">
+                            <li>
+                                <div class="text-en"><b>Institute:</b> North Eastern University (NEU)</div>
+                                <div class="text-th"><b>สถาบัน:</b> มหาวิทยาลัยภาคตะวันออกเฉียงเหนือ</div>
+                            </li>
+                            <li>
+                                <div class="text-en"><b>Thesis:</b> "SAP System Backup Project" for PR/GR processes.</div>
+                                <div class="text-th"><b>วิทยานิพนธ์:</b> โครงการระบบสำรองข้อมูล SAP สำหรับกระบวนการจัดซื้อ</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Degree 2 -->
+                <div style="display:flex; gap:30px; align-items: flex-start;">
+                    <div class="logo-box" style="width:220px; justify-content:center; flex-shrink: 0; height: 80px;">
+                        <i class="fa-solid fa-school" style="color:#333; font-size:32px;"></i>
+                        <span style="color:#000; font-weight:bold; margin-left:15px; font-size: 16px;">PHONGPINYO</span>
+                        <i class="fa-solid fa-calculator" style="color:#333; font-size:32px; margin-left:15px;"></i>
+                    </div>
+                    <div>
+                        <div class="text-en" style="font-size:2rem; color:var(--accent-blue);">High Vocational Certificate (2014)</div>
+                        <div class="text-th" style="font-size:1.4rem;">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</div>
+                        <ul class="job-details">
+                            <li>
+                                <div class="text-en"><b>Institute:</b> Phongpinyo Technological College (Accounting)</div>
+                                <div class="text-th"><b>สถาบัน:</b> วิทยาลัยเทคโนโลยีพงศ์ภิญโญ (สาขาการบัญชี)</div>
+                            </li>
+                            <li>
+                                <div class="text-en"><b>GPA:</b> 3.67 (Outstanding Academic Performance)</div>
+                                <div class="text-th"><b>เกรดเฉลี่ย:</b> 3.67 (ผลการเรียนดีเยี่ยม)</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: EXPERIENCE 1 (CPAC) -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">PRODUCTION ANALYSIS STAFF</div>
+                <div class="main-title">
+                    <div class="logo-box"><img src="https://logo.clearbit.com/scg.com" class="logo-img"></div>
+                    CPAC Monier (SCG Group)
+                </div>
+            </div>
+            <div class="role-badge">2009 - 2016</div>
+        </div>
+
+        <div class="biz-context">
+            <div class="biz-icon"><i class="fa-solid fa-trowel-bricks"></i></div>
+            <div>
+                <div class="text-en"><b>Business:</b> Leading manufacturer of concrete roof tiles and construction materials in Thailand.</div>
+                <div class="text-th"><b>ธุรกิจ:</b> ผู้ผลิตกระเบื้องหลังคาคอนกรีตและวัสดุก่อสร้างชั้นนำของประเทศไทย</div>
+            </div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card">
+                    <span class="stat-val">QC 7</span>
+                    <span class="stat-lbl">TOOLS EXPERT</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">ISO</span>
+                    <span class="stat-lbl">9001 AUDITOR</span>
+                </div>
+            </div>
+            <div>
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en">Analyzed production data using <b>QC 7 Tools</b> (Pareto, Histogram) to identify bottlenecks.</div>
+                        <div class="text-th">วิเคราะห์ข้อมูลการผลิตโดยใช้เครื่องมือ <b>QC 7 Tools</b> (Pareto, Histogram) เพื่อค้นหาจุดคอขวดและลดความสูญเสีย</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Summarized daily <b>OEE (Overall Equipment Effectiveness)</b> and Machine Breakdown reports.</div>
+                        <div class="text-th">จัดทำรายงานประสิทธิผลโดยรวมของเครื่องจักร (OEE) และรายงานการหยุดชะงักของเครื่องจักรประจำวัน</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Managed ISO9001 documentation and conducted Internal Audits.</div>
+                        <div class="text-th">ดูแลระบบเอกสาร ISO9001 และดำเนินการตรวจสอบภายใน (Internal Audit)</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: EXPERIENCE 2 (TCP) -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">PURCHASING & ADMIN</div>
+                <div class="main-title">
+                    <div class="logo-box"><img src="https://logo.clearbit.com/tcp.com" class="logo-img"></div>
+                    T.C. Pharmaceutical (TCP)
+                </div>
+            </div>
+            <div class="role-badge">2016 - 2019</div>
+        </div>
+
+        <div class="biz-context">
+            <div class="biz-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+            <div>
+                <div class="text-en"><b>Business:</b> Global Food & Beverage company, owner of Red Bull (Krating Daeng) and Sponsor.</div>
+                <div class="text-th"><b>ธุรกิจ:</b> บริษัทอาหารและเครื่องดื่มระดับโลก ผู้ผลิตและเจ้าของแบรนด์กระทิงแดง (Red Bull) และสปอนเซอร์</div>
+            </div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card">
+                    <span class="stat-val">SAP</span>
+                    <span class="stat-lbl">ERP POWER USER</span>
+                </div>
+                <div class="stat-card" style="border-color:var(--accent-gold);">
+                    <span class="stat-val">IT</span>
+                    <span class="stat-lbl">PROJECT LEAD</span>
+                </div>
+            </div>
+            <div>
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en">Managed full procurement cycle (PR/PO) via <b>SAP ERP</b> system.</div>
+                        <div class="text-th">บริหารจัดการวงจรการจัดซื้อ (ออกใบขอซื้อ/ใบสั่งซื้อ) ผ่านระบบ <b>SAP ERP</b> อย่างเต็มรูปแบบ</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Negotiated with suppliers to optimize costs and delivery schedules.</div>
+                        <div class="text-th">เจรจาต่อรองกับซัพพลายเออร์เพื่อควบคุมต้นทุนและกำหนดการส่งมอบสินค้าให้ทันเวลา</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Project Manager:</b> Led the installation of CCTV, Network Security, and IP Phone systems for the factory.</div>
+                        <div class="text-th"><b>ผู้จัดการโครงการ:</b> เป็นผู้นำโครงการติดตั้งระบบกล้องวงจรปิด, ระบบเครือข่าย และโทรศัพท์ IP Phone สำหรับโรงงานขอนแก่น</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: EXPERIENCE 3 (Siam Quality) -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">SENIOR SUPERVISOR</div>
+                <div class="main-title">
+                    <div class="logo-box"><img src="https://logo.clearbit.com/smscor.com" class="logo-img"></div>
+                    Siam Quality Starch (SMS Group)
+                </div>
+            </div>
+            <div class="role-badge">2019 - 2023</div>
+        </div>
+
+        <div class="biz-context">
+            <div class="biz-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div>
+                <div class="text-en"><b>Business:</b> World-class manufacturer of modified tapioca starch for food and industrial applications.</div>
+                <div class="text-th"><b>ธุรกิจ:</b> ผู้ผลิตแป้งมันสำปะหลังดัดแปรระดับโลก สำหรับอุตสาหกรรมอาหารและอุตสาหกรรมอื่นๆ</div>
+            </div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card">
+                    <span class="stat-val">FIFO</span>
+                    <span class="stat-lbl">SYSTEM SETUP</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">SAFETY</span>
+                    <span class="stat-lbl">OFFICER CERTIFIED</span>
+                </div>
+            </div>
+            <div>
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en">Managed Inbound/Outbound operations ensuring 100% stock accuracy.</div>
+                        <div class="text-th">บริหารจัดการการรับและจ่ายสินค้า (Inbound/Outbound) โดยรับประกันความถูกต้องของสต็อก 100%</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Implemented <b>FIFO (First-In-First-Out)</b> to reduce spoilage and managed "Dead Stock" reduction.</div>
+                        <div class="text-th">วางระบบ <b>FIFO</b> เพื่อลดสินค้าเสื่อมสภาพ และบริหารจัดการโครงการลดสินค้าค้างสต็อก (Dead Stock)</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Certified <b>Safety Officer (Supervisor Level)</b> enforcing zero-accident culture.</div>
+                        <div class="text-th">ได้รับใบรับรอง <b>จป.หัวหน้างาน</b> และบังคับใช้นโยบายความปลอดภัยเพื่อมุ่งสู่อุบัติเหตุเป็นศูนย์</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: EXPERIENCE 4 (Sahakol) -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">WAREHOUSE MANAGER</div>
+                <div class="main-title">
+                    <div class="logo-box"><img src="https://logo.clearbit.com/sahakol.com" class="logo-img"></div>
+                    Sahakol Equipment (Hongsa Project)
+                </div>
+            </div>
+            <div class="role-badge">2023</div>
+        </div>
+
+        <div class="biz-context">
+            <div class="biz-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <div>
+                <div class="text-en"><b>Business:</b> Full-scale mining contractor and power plant construction specialist.</div>
+                <div class="text-th"><b>ธุรกิจ:</b> ผู้รับเหมาเหมืองแบบครบวงจรและผู้เชี่ยวชาญด้านการก่อสร้างโรงไฟฟ้า</div>
+            </div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card">
+                    <span class="stat-val">ERP</span>
+                    <span class="stat-lbl">SAP & ORACLE</span>
+                </div>
+                <div class="stat-card" style="border-color:var(--accent-gold);">
+                    <span class="stat-val">KPI</span>
+                    <span class="stat-lbl">STRATEGY SETUP</span>
+                </div>
+            </div>
+            <div>
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en">Managed Spare Parts & Oil Lube warehouse operations using <b>SAP & Oracle</b>.</div>
+                        <div class="text-th">บริหารคลังอะไหล่และน้ำมันเครื่องโดยใช้ระบบ <b>SAP และ Oracle</b></div>
+                    </li>
+                    <li>
+                        <div class="text-en">Developed Organizational Charts, Job Descriptions, and Workflows for the new team.</div>
+                        <div class="text-th">จัดทำโครงสร้างองค์กร (Org Chart), คำบรรยายลักษณะงาน (JD) และขั้นตอนการทำงาน (Workflow) สำหรับทีมใหม่</div>
+                    </li>
+                    <li>
+                        <div class="text-en">Optimized <b>Min/Max/ROP</b> levels to prevent stockouts while minimizing holding costs.</div>
+                        <div class="text-th">คำนวณจุดสั่งซื้อที่เหมาะสม (Min/Max/ROP) เพื่อป้องกันสินค้าขาดสต็อกพร้อมลดต้นทุนการถือครอง</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: CURRENT (TD Supply Chain) -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">CURRENT ROLE</div>
+                <div class="main-title">
+                    <div class="logo-box"><img src="https://logo.clearbit.com/cjexpress.co.th" class="logo-img"></div>
+                    TD Supply Chain (CJ More)
+                </div>
+            </div>
+            <div class="role-badge">Present</div>
+        </div>
+
+        <div class="biz-context">
+            <div class="biz-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div>
+                <div class="text-en"><b>Business:</b> Logistics and Distribution Center for CJ More, a major convenience store chain in Thailand.</div>
+                <div class="text-th"><b>ธุรกิจ:</b> ผู้ให้บริการโลจิสติกส์และศูนย์กระจายสินค้าให้กับ CJ More เชนร้านสะดวกซื้อรายใหญ่ของไทย</div>
+            </div>
+        </div>
+
+        <div class="split-grid">
+            <div class="left-col">
+                <div class="stat-card" style="background:rgba(245, 158, 11, 0.15); border-color:var(--accent-gold);">
+                    <span class="stat-val">8.4M</span>
+                    <span class="stat-lbl">THB SAVED / YEAR</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">+38%</span>
+                    <span class="stat-lbl">PRODUCTIVITY</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">450+</span>
+                    <span class="stat-lbl">STAFF MANAGED</span>
+                </div>
+            </div>
+            <div>
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en"><b>Strategic Cost Reduction:</b> Optimized OT usage and workflows, saving <b>702,000 THB/month</b> (8.4M/year).</div>
+                        <div class="text-th"><b>การลดต้นทุนเชิงกลยุทธ์:</b> บริหารจัดการ OT และปรับปรุงกระบวนการทำงาน ลดค่าใช้จ่ายได้ <b>702,000 บาท/เดือน</b> (8.4 ล้านบาท/ปี)</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Efficiency Boost:</b> Increased Picking productivity by 38% through route optimization and re-layout.</div>
+                        <div class="text-th"><b>เพิ่มประสิทธิภาพ:</b> ผลผลิตการหยิบสินค้าเพิ่มขึ้น 38% ผ่านการจัดเส้นทางเดินสินค้าและการวางผังใหม่</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Innovation:</b> Developed custom <b>Mobile Applications</b> to track staff performance in real-time.</div>
+                        <div class="text-th"><b>นวัตกรรม:</b> พัฒนา <b>Mobile Application</b> เพื่อติดตามผลการทำงานของพนักงานแบบเรียลไทม์</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Lean Process:</b> Eliminated Shipping Labels (PTL), saving 60,000 THB/month.</div>
+                        <div class="text-th"><b>กระบวนการแบบ Lean:</b> ยกเลิกการใช้ Shipping Label (PTL) ช่วยประหยัดงบได้ 60,000 บาท/เดือน</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: ORG CHART -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">LEADERSHIP</div>
+                <div class="main-title"><i class="fa-solid fa-sitemap"></i> Organization Structure</div>
+            </div>
+            <div class="role-badge">Scope: 450+ Pax</div>
+        </div>
+
+        <div class="org-chart">
+            <!-- Level 1 -->
+            <div class="org-node" style="border-color:var(--accent-gold); transform:scale(1.2); z-index:10; min-width: 250px;">
+                <div class="text-en" style="font-weight:bold; color:white; font-size: 1.5rem;">Picking Dept Manager</div>
+                <div class="text-th" style="margin-bottom:0; font-size: 1.2rem;">(ME)</div>
+            </div>
+            <div class="org-line"></div>
+            
+            <!-- Level 2 -->
+            <div class="org-row">
+                <div class="org-connector"></div>
+                <div class="org-node">
+                    <div class="text-en" style="font-weight:bold;">Dept Managers</div>
+                    <div class="text-th" style="margin-bottom:0; color:var(--accent-blue);">6 Persons</div>
+                </div>
+                <div class="org-node">
+                    <div class="text-en" style="font-weight:bold;">Asst Managers</div>
+                    <div class="text-th" style="margin-bottom:0; color:var(--accent-blue);">Support</div>
+                </div>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="org-line"></div>
+            <div class="org-node">
+                <div class="text-en" style="font-weight:bold;">Supervisors</div>
+                <div class="text-th" style="margin-bottom:0; color:var(--accent-blue);">36 Persons</div>
+            </div>
+
+            <!-- Level 4 -->
+            <div class="org-line"></div>
+            <div class="org-node" style="width:500px; background:rgba(255,255,255,0.05);">
+                <i class="fa-solid fa-users" style="font-size:32px; color:var(--accent-gold); margin-bottom:15px;"></i>
+                <div class="text-en" style="font-weight:bold; font-size:1.8rem;">Operational Staff</div>
+                <div class="text-th" style="margin-bottom:0; color:var(--accent-blue); font-size:1.6rem;">450 Persons</div>
+                <div style="font-size:1rem; color:#aaa; margin-top:10px;">Picking / Sorting / Packing</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: INFOGRAPHIC -->
+    <div class="slide">
+        <div class="header-row">
+            <div>
+                <div class="role-badge">OPERATIONAL FLOW</div>
+                <div class="main-title"><i class="fa-solid fa-network-wired"></i> DC Workflow</div>
+            </div>
+            <div class="role-badge">Process View</div>
+        </div>
+
+        <div class="split-grid">
+            <!-- Diagram Visual -->
+            <div style="background:rgba(0,0,0,0.3); border-radius:12px; position:relative; display:flex; justify-content:center; align-items:center; min-height: 400px;">
+                <div style="position:relative; width:400px; height:400px;">
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100px; height:100px; background:var(--accent-gold); border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 0 30px rgba(245,158,11,0.4); z-index:10;">
+                        <i class="fa-solid fa-warehouse" style="font-size:40px; color:#000;"></i>
+                    </div>
+                    <!-- Nodes -->
+                    <div style="position:absolute; top:0; left:50%; transform:translate(-50%, -50%); text-align:center;">
+                        <div style="background:#1e293b; border:2px solid var(--accent-blue); padding:15px; border-radius:8px; font-weight: bold;">INBOUND</div>
+                        <div style="height:60px; width:4px; background:rgba(255,255,255,0.2); margin:0 auto;"></div>
+                    </div>
+                    <div style="position:absolute; bottom:0; left:50%; transform:translate(-50%, 50%); text-align:center;">
+                         <div style="height:60px; width:4px; background:rgba(255,255,255,0.2); margin:0 auto;"></div>
+                        <div style="background:#1e293b; border:2px solid var(--accent-blue); padding:15px; border-radius:8px; font-weight: bold;">OUTBOUND</div>
+                    </div>
+                    <div style="position:absolute; top:50%; right:0; transform:translate(50%, -50%); text-align:center;">
+                         <div style="width:60px; height:4px; background:rgba(255,255,255,0.2); position:absolute; right:100%; top:50%;"></div>
+                        <div style="background:#1e293b; border:2px solid var(--accent-gold); padding:20px; border-radius:8px; transform:scale(1.2); font-weight: bold; color: var(--accent-gold);">PICKING (ME)</div>
+                    </div>
+                    <div style="position:absolute; top:50%; left:0; transform:translate(-50%, -50%); text-align:center;">
+                        <div style="background:#1e293b; border:2px solid var(--accent-blue); padding:15px; border-radius:8px; font-weight: bold;">STORAGE</div>
+                         <div style="width:60px; height:4px; background:rgba(255,255,255,0.2); position:absolute; left:100%; top:50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; justify-content:center;">
+                <div class="text-en" style="font-size:2.5rem; color:var(--accent-blue); margin-bottom:15px;">Optimization Strategy</div>
+                <div class="text-th" style="font-size:2rem; color:var(--text-main); margin-bottom:30px;">กลยุทธ์การเพิ่มประสิทธิภาพ</div>
+                
+                <ul class="job-details">
+                    <li>
+                        <div class="text-en"><b>Route Optimization:</b> Analyzing heatmaps to place fast-moving goods close to dispatch.</div>
+                        <div class="text-th"><b>จัดเส้นทาง:</b> วิเคราะห์ Heatmap เพื่อวางสินค้าขายดีไว้ใกล้จุดจ่ายของ</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Batch Picking:</b> Grouping orders to minimize walking distance per picker.</div>
+                        <div class="text-th"><b>รวมออเดอร์:</b> จัดกลุ่มคำสั่งซื้อเพื่อลดระยะทางการเดินต่อรอบ</div>
+                    </li>
+                    <li>
+                        <div class="text-en"><b>Real-time Monitoring:</b> Tracking "Pick per Hour" via Mobile Apps.</div>
+                        <div class="text-th"><b>ติดตามผล:</b> ดูยอดการหยิบสินค้าแบบเรียลไทม์ผ่านแอปมือถือ</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: HERO CONTACT -->
+    <div class="slide">
+        <div class="hero-container">
+            <div class="hero-photo-box">
+                <img src="https://img5.pic.in.th/file/secure-sv1/548292645_10233190380276143_2879789966387876379_n---Copy.jpg" class="hero-photo">
+            </div>
+            
+            <div style="flex:1;">
+                <h1 style="font-size:4rem; margin:0; line-height:1;">NATTAWOOT OUANLAM</h1>
+                <div style="font-family:'Rajdhani'; font-size:2rem; color:var(--accent-gold); letter-spacing:4px; margin:15px 0 50px 0;">PICKING DEPARTMENT MANAGER</div>
+                
+                <div class="contact-list">
+                    <!-- Primary Phone -->
+                    <a href="tel:0646949742" class="contact-pill" style="border-color:var(--accent-gold); box-shadow:0 0 20px rgba(245,158,11,0.2);">
+                        <i class="fa-solid fa-phone" style="font-size:32px; color:var(--accent-gold);"></i>
+                        <div>
+                            <div class="text-en" style="font-size:2rem; font-weight:700; margin:0;">064-694-9742</div>
+                            <div class="text-th" style="margin:0; font-size:1rem;">Primary / เบอร์หลัก</div>
+                        </div>
+                    </a>
+
+                    <div class="contact-pill">
+                        <i class="fa-solid fa-phone" style="font-size:32px;"></i>
+                        <div>
+                            <div class="text-en" style="font-size:1.8rem; font-weight:700; margin:0;">095-653-5333</div>
+                            <div class="text-th" style="margin:0; font-size:1rem;">Secondary / เบอร์รอง</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-pill">
+                        <i class="fa-solid fa-envelope" style="font-size:32px;"></i>
+                        <div>
+                            <div class="text-en" style="font-size:1.4rem; margin:0;">nattawoaforex2@gmail.com</div>
+                            <div class="text-th" style="margin:0; font-size:1rem;">Email</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-pill">
+                        <i class="fa-brands fa-line" style="font-size:32px;"></i>
+                        <div>
+                            <div class="text-en" style="font-size:1.8rem; font-weight:700; margin:0;">nattawoa3</div>
+                            <div class="text-th" style="margin:0; font-size:1rem;">Line ID</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="move(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div style="display: flex; align-items: center; justify-content: center; width: 60px;">
+            <span id="page-num" style="color:white;">1</span>
+            <span style="color:rgba(255,255,255,0.5); margin: 0 5px; font-size: 20px;">/</span>
+            <span style="color:rgba(255,255,255,0.5); font-family:'Rajdhani'; font-size: 20px;">10</span>
+        </div>
+        <button class="nav-btn" onclick="move(1)"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const pageNum = document.getElementById('page-num');
+
+    function move(dir) {
+        slides[current].classList.remove('active');
+        current += dir;
+        if(current < 0) current = 0;
+        if(current >= slides.length) current = slides.length - 1;
+        slides[current].classList.add('active');
+        pageNum.innerText = current + 1;
+    }
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if(e.key === "ArrowRight") move(1);
+        if(e.key === "ArrowLeft") move(-1);
+    });
+</script>
+</body>
+</html>

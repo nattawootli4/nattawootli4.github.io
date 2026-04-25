@@ -198,10 +198,11 @@ nav.solid{background:rgba(5,10,24,.96);backdrop-filter:blur(20px);border-bottom:
   pointer-events:none;
 }
 .hero-photo{
-  width:100%;aspect-ratio:1/1.1;border-radius:8px;
-  object-fit:cover;object-position:top;
+  width:100%;aspect-ratio:3/4.5;border-radius:10px;
+  object-fit:cover;object-position:top center;
   border:1px solid var(--bd);margin-bottom:20px;
-  filter:contrast(1.05) saturate(.95);
+  filter:contrast(1.08) saturate(.92) brightness(1.02);
+  box-shadow:0 8px 48px rgba(0,0,0,.6), 0 0 0 1px rgba(201,168,76,.15);
 }
 .mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .ms{
@@ -661,8 +662,8 @@ footer{
 
     <div class="hero-card">
       <img class="hero-photo"
-        src="https://img2.pic.in.th/pic/548292645_10233190380276143_2879789966387876379_n---Copy.jpg"
-        alt="Nattawoot Ouanlam">
+        src="profile.jpg"
+        alt="Nattawoot Ouanlam — Acting Deputy Director DC Operations">
       <div class="mini-stats">
         <div class="ms"><div class="ms-v" data-target="818" data-counted="0">0</div><div class="ms-l">Staff</div></div>
         <div class="ms"><div class="ms-v" data-target="16" data-suffix="+" data-counted="0">0</div><div class="ms-l">Years</div></div>
@@ -807,46 +808,11 @@ footer{
           </div>
         </div>
 
-        <!-- Mini Org Chart -->
-        <div class="orgchart r d2">
-          <div class="org-t">Organization Structure · DC4</div>
-          <div style="display:flex;justify-content:center">
-            <div class="org-box gold" style="border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.08)">
-              <div class="org-box-t" style="color:var(--g)">DC Director · ผู้อำนวยการ</div>
-              <div class="org-box-s">วันวิสา เมืองจันทร์</div>
-            </div>
-          </div>
-          <div class="org-vl"></div>
-          <div class="org-row">
-            <div class="org-col">
-              <div class="org-box me">
-                <div class="org-box-t">รก.รองผอ. Operation</div>
-                <div class="org-box-me">◀ Nattawoot (ME)</div>
-              </div>
-              <div class="org-vl"></div>
-              <div class="org-row" style="gap:8px">
-                <div class="org-col">
-                  <div class="org-box" style="min-width:90px">
-                    <div class="org-box-t">Flow</div>
-                    <div class="org-box-s">211 pax</div>
-                  </div>
-                </div>
-                <div class="org-col">
-                  <div class="org-box" style="min-width:90px">
-                    <div class="org-box-t">Front</div>
-                    <div class="org-box-s">607 pax</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style="width:24px"></div>
-            <div class="org-col">
-              <div class="org-box">
-                <div class="org-box-t">Deputy Director</div>
-                <div class="org-box-s">Inventory &amp; Support</div>
-              </div>
-            </div>
-          </div>
+        <!-- SC metrics only, org chart moved below -->
+        <div class="sc-metrics-only r d2" style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div class="sc-m"><div class="sc-mv" data-target="818" data-counted="0">0</div><div class="sc-ml">Total Staff</div></div>
+          <div class="sc-m"><div class="sc-mv" data-target="6" data-counted="0">0</div><div class="sc-ml">Departments</div></div>
+          <div class="sc-m"><div class="sc-mv" data-target="2" data-counted="0">0</div><div class="sc-ml">Divisions</div></div>
         </div>
       </div>
 
@@ -872,6 +838,454 @@ footer{
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DC GREATNESS — Visual Impact Section
+═══════════════════════════════════════════ -->
+<section id="dc-greatness" style="background:var(--ink);padding:0;overflow:hidden;position:relative">
+
+  <!-- Animated warehouse background for this section -->
+  <div style="position:absolute;inset:0;z-index:0;opacity:.12">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <!-- Giant warehouse rack silhouette -->
+      <rect x="0" y="0" width="1440" height="600" fill="none"/>
+      <!-- Rack uprights -->
+      <g stroke="#C9A84C" stroke-width="3" fill="none">
+        <line x1="60" y1="0" x2="60" y2="600"/><line x1="200" y1="0" x2="200" y2="600"/>
+        <line x1="340" y1="0" x2="340" y2="600"/><line x1="480" y1="0" x2="480" y2="600"/>
+        <line x1="620" y1="0" x2="620" y2="600"/><line x1="760" y1="0" x2="760" y2="600"/>
+        <line x1="900" y1="0" x2="900" y2="600"/><line x1="1040" y1="0" x2="1040" y2="600"/>
+        <line x1="1180" y1="0" x2="1180" y2="600"/><line x1="1320" y1="0" x2="1320" y2="600"/>
+        <line x1="1420" y1="0" x2="1420" y2="600"/>
+      </g>
+      <!-- Rack beams -->
+      <g stroke="#4FC3F7" stroke-width="2" fill="none">
+        <line x1="0" y1="100" x2="1440" y2="100"/><line x1="0" y1="220" x2="1440" y2="220"/>
+        <line x1="0" y1="340" x2="1440" y2="340"/><line x1="0" y1="460" x2="1440" y2="460"/>
+        <line x1="0" y1="560" x2="1440" y2="560"/>
+      </g>
+      <!-- Storage boxes -->
+      <g fill="#C9A84C" opacity="0.5">
+        <rect x="70" y="110" width="110" height="100" rx="3"/><rect x="210" y="110" width="110" height="100" rx="3"/>
+        <rect x="350" y="110" width="110" height="100" rx="3"/><rect x="490" y="110" width="110" height="100" rx="3"/>
+        <rect x="630" y="110" width="110" height="100" rx="3"/><rect x="770" y="110" width="110" height="100" rx="3"/>
+        <rect x="910" y="110" width="110" height="100" rx="3"/><rect x="1050" y="110" width="110" height="100" rx="3"/>
+        <rect x="1190" y="110" width="110" height="100" rx="3"/>
+      </g>
+      <g fill="#3DBAEF" opacity="0.4">
+        <rect x="70" y="230" width="110" height="100" rx="3"/><rect x="350" y="230" width="110" height="100" rx="3"/>
+        <rect x="630" y="230" width="110" height="100" rx="3"/><rect x="910" y="230" width="110" height="100" rx="3"/>
+        <rect x="1190" y="230" width="110" height="100" rx="3"/>
+      </g>
+      <!-- Conveyor at bottom -->
+      <rect x="0" y="570" width="1440" height="30" fill="#25C4C4" opacity="0.3"/>
+      <!-- Forklift silhouettes -->
+      <g fill="#C9A84C" opacity="0.6">
+        <rect x="150" y="490" width="80" height="70" rx="4"/>
+        <rect x="100" y="520" width="60" height="40" rx="2"/>
+        <rect x="218" y="400" width="12" height="100"/>
+        <rect x="195" y="400" width="50" height="10"/>
+        <circle cx="165" cy="562" r="12"/><circle cx="215" cy="562" r="12"/>
+      </g>
+      <g fill="#3DBAEF" opacity="0.5">
+        <rect x="1200" y="480" width="80" height="70" rx="4"/>
+        <rect x="1155" y="510" width="55" height="40" rx="2"/>
+        <rect x="1268" y="390" width="12" height="100"/>
+        <rect x="1245" y="390" width="50" height="10"/>
+        <circle cx="1215" cy="552" r="12"/><circle cx="1265" cy="552" r="12"/>
+      </g>
+    </svg>
+  </div>
+
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,10,24,.5) 0%,rgba(5,10,24,.2) 40%,rgba(5,10,24,.6) 100%)"></div>
+
+  <div style="position:relative;z-index:2;padding:80px 60px">
+    <div style="max-width:1400px;margin:0 auto">
+
+      <!-- Big dramatic stat display -->
+      <div style="text-align:center;margin-bottom:60px">
+        <div style="font-family:var(--fm);font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--grn);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px">
+          <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--grn);animation:livepulse 1.5s infinite"></span>
+          TDSC DC4 KHON KAEN · ศูนย์กระจายสินค้าที่ยิ่งใหญ่ที่สุดในภาคอีสาน
+        </div>
+        <div style="font-family:var(--fd);font-size:clamp(3rem,6vw,6rem);letter-spacing:.04em;color:var(--w);line-height:.95;margin-bottom:12px">
+          NORTHEAST THAILAND'S<br>
+          <span style="background:linear-gradient(90deg,var(--g),var(--g2),var(--g3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shimmer 4s linear infinite">LARGEST DC</span>
+        </div>
+        <div style="font-size:1rem;color:var(--w2);max-width:700px;margin:0 auto;line-height:1.8">
+          Distribution center distributing <strong style="color:var(--w)">Carabao Group</strong> FMCG products to <strong style="color:var(--g)">TD Shop</strong> &amp; <strong style="color:var(--g)">CJ More</strong> across the entire Northeast region of Thailand
+        </div>
+      </div>
+
+      <!-- 5 giant stats in a row -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--bd)" class="r">
+        <div style="background:rgba(12,21,48,.92);padding:40px 24px;text-align:center">
+          <div style="font-family:var(--fd);font-size:3.5rem;letter-spacing:.04em;color:var(--g);line-height:1;margin-bottom:8px" data-target="1000" data-suffix="+" data-counted="0">0</div>
+          <div style="font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:4px">Total Headcount</div>
+          <div style="font-family:var(--fm);font-size:.65rem;color:var(--w3);letter-spacing:.08em">พนักงานทั้ง DC รวม</div>
+        </div>
+        <div style="background:rgba(12,21,48,.92);padding:40px 24px;text-align:center">
+          <div style="font-family:var(--fd);font-size:3.5rem;letter-spacing:.04em;color:var(--grn);line-height:1;margin-bottom:8px" data-target="10" data-suffix="+" data-counted="0">0</div>
+          <div style="font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:4px">Departments Total</div>
+          <div style="font-family:var(--fm);font-size:.65rem;color:var(--w3);letter-spacing:.08em">แผนกทั้งหมดใน DC4</div>
+        </div>
+        <div style="background:rgba(12,21,48,.92);padding:40px 24px;text-align:center">
+          <div style="font-family:var(--fd);font-size:3.5rem;letter-spacing:.04em;color:var(--b);line-height:1;margin-bottom:8px" data-target="3" data-counted="0">0</div>
+          <div style="font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:4px">Picking Zones</div>
+          <div style="font-family:var(--fm);font-size:.65rem;color:var(--w3);letter-spacing:.08em">PTL · PTT · FR Zone</div>
+        </div>
+        <div style="background:rgba(12,21,48,.92);padding:40px 24px;text-align:center">
+          <div style="font-family:var(--fd);font-size:3.5rem;letter-spacing:.04em;color:var(--teal);line-height:1;margin-bottom:8px" data-target="24" data-suffix="hr" data-counted="0">0</div>
+          <div style="font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:4px">Operations</div>
+          <div style="font-family:var(--fm);font-size:.65rem;color:var(--w3);letter-spacing:.08em">ปฏิบัติการตลอด 24 ชั่วโมง</div>
+        </div>
+        <div style="background:rgba(12,21,48,.92);padding:40px 24px;text-align:center">
+          <div style="font-family:var(--fd);font-size:3.5rem;letter-spacing:.04em;color:var(--g2);line-height:1;margin-bottom:8px">#<span data-target="1" data-counted="0">0</span></div>
+          <div style="font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:4px">In Northeast</div>
+          <div style="font-family:var(--fm);font-size:.65rem;color:var(--w3);letter-spacing:.08em">อันดับ 1 ในภาคอีสาน</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FULL ORG CHART — Detailed Structure
+═══════════════════════════════════════════ -->
+<section id="orgchart-full" style="background:var(--ink2);padding:80px 40px;position:relative;overflow:hidden">
+
+  <!-- Faint grid background -->
+  <div style="position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:40px 40px;pointer-events:none"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent)"></div>
+
+  <div style="max-width:1400px;margin:0 auto;position:relative;z-index:1">
+    <div style="font-family:var(--fm);font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <span style="display:block;width:28px;height:1px;background:var(--g)"></span>
+      Organization Structure · โครงสร้างองค์กร DC4
+    </div>
+    <h2 style="font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);letter-spacing:.04em;color:var(--w);margin-bottom:6px;line-height:1">DC4 Command Structure</h2>
+    <p style="font-size:.86rem;color:var(--w2);margin-bottom:48px;max-width:700px;line-height:1.7">โครงสร้างองค์กรครบทุก Level ตั้งแต่ผู้อำนวยการ ถึงเจ้าหน้าที่ — ณัฐวุฒิดูแลฝ่าย Operation ทั้งหมด</p>
+
+    <!-- ORG CHART CONTAINER -->
+    <div class="full-org r" style="overflow-x:auto;padding-bottom:12px">
+    <div style="min-width:1200px">
+
+    <!-- STYLES for org boxes -->
+    <style>
+    .ob{border-radius:6px;text-align:center;font-family:var(--fm);position:relative;transition:all .2s;cursor:default}
+    .ob:hover{transform:translateY(-2px)}
+    .ob-dir{background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(201,168,76,.08));border:1.5px solid var(--g);padding:10px 18px;min-width:200px}
+    .ob-me{background:linear-gradient(135deg,rgba(201,168,76,.25),rgba(201,168,76,.1));border:2px solid var(--g);padding:10px 18px;min-width:200px;box-shadow:0 0 24px rgba(201,168,76,.2)}
+    .ob-inv{background:rgba(61,186,239,.08);border:1.5px solid rgba(61,186,239,.4);padding:9px 14px;min-width:160px}
+    .ob-mgr{background:rgba(12,21,48,.9);border:1px solid rgba(201,168,76,.3);padding:7px 12px;min-width:110px}
+    .ob-dept{background:rgba(12,21,48,.8);border:1px solid rgba(61,186,239,.2);padding:6px 10px;min-width:95px}
+    .ob-sup{background:rgba(8,15,34,.9);border:1px solid rgba(255,255,255,.08);padding:5px 10px;min-width:85px}
+    .ob-stf{background:rgba(8,15,34,.8);border:1px solid rgba(255,255,255,.05);padding:4px 8px;min-width:75px}
+    .ob-t{font-size:.62rem;font-weight:600;color:var(--w);letter-spacing:.04em;line-height:1.3}
+    .ob-s{font-size:.54rem;color:var(--w3);margin-top:2px;letter-spacing:.02em}
+    .ob-me-tag{font-size:.52rem;color:var(--g);margin-top:3px;letter-spacing:.08em;text-transform:uppercase}
+    .ob-lv{font-size:.48rem;color:var(--w3);margin-top:2px;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
+    .ov{width:1px;background:rgba(201,168,76,.3);margin:0 auto}
+    .ov-b{width:1px;background:rgba(61,186,239,.3);margin:0 auto}
+    .oh{height:1px;background:rgba(201,168,76,.25)}
+    .oh-b{height:1px;background:rgba(61,186,239,.25)}
+    .oh-g{height:1px;background:rgba(255,255,255,.1)}
+    .flex-c{display:flex;justify-content:center}
+    .flex-row{display:flex;justify-content:center;gap:8px;align-items:flex-start}
+    .flex-col{display:flex;flex-direction:column;align-items:center}
+    </style>
+
+    <!-- L0: DIRECTOR -->
+    <div class="flex-c" style="margin-bottom:0">
+      <div class="ob ob-dir">
+        <div class="ob-t" style="color:var(--g)">ผู้อำนวยการ DC · DC Director</div>
+        <div class="ob-s">วันวิสา เมืองจันทร์</div>
+        <div class="ob-lv">Level 0</div>
+      </div>
+    </div>
+    <div class="ov" style="height:24px"></div>
+
+    <!-- L1: TWO DEPUTY DIRECTORS SIDE BY SIDE -->
+    <div class="flex-row" style="align-items:flex-start;gap:60px">
+
+      <!-- ====== LEFT BRANCH: NATTAWOOT OPERATION ====== -->
+      <div class="flex-col" style="flex:1.4">
+        <div class="ob ob-me" style="min-width:240px">
+          <div class="ob-t">รก.รองผู้อำนวยการ DC Operation</div>
+          <div class="ob-me-tag">◀ ณัฐวุฒิ อ้วนล้ำ (ME)</div>
+          <div class="ob-lv">Level 1 · Acting Deputy Director</div>
+        </div>
+        <div class="ov" style="height:24px"></div>
+
+        <!-- L2: 2 Division Managers -->
+        <div style="position:relative;display:flex;gap:80px;justify-content:center">
+          <!-- H-line connecting -->
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;align-items:center;width:calc(100% - 120px)">
+            <div style="flex:1;height:1px;background:rgba(201,168,76,.3)"></div>
+          </div>
+
+          <!-- FLOW DIVISION -->
+          <div class="flex-col">
+            <div class="ov" style="height:0"></div>
+            <div class="ob ob-mgr" style="min-width:160px;border-color:rgba(61,186,239,.5);background:rgba(61,186,239,.08)">
+              <div class="ob-t" style="color:var(--b)">ผู้จัดการฝ่าย FLOW</div>
+              <div class="ob-s">ทวีชัย นามมล</div>
+              <div class="ob-lv">Level 2 · Division Mgr</div>
+            </div>
+            <div class="ov-b" style="height:20px"></div>
+
+            <!-- L3: Flow Dept Managers x3 -->
+            <div style="display:flex;gap:6px;position:relative">
+              <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(61,186,239,.25)"></div>
+
+              <!-- Inbound -->
+              <div class="flex-col">
+                <div class="ov-b" style="height:0"></div>
+                <div class="ob ob-dept" style="border-color:rgba(61,186,239,.35)">
+                  <div class="ob-t" style="color:var(--b);font-size:.58rem">แผนก Inbound</div>
+                  <div class="ob-s">ผจก. พิมพร ถาวงษ์</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov-b" style="height:14px"></div>
+                <!-- L4: Section heads -->
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Checker</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Data</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 54 pax</div></div>
+              </div>
+
+              <!-- Outbound -->
+              <div class="flex-col">
+                <div class="ov-b" style="height:0"></div>
+                <div class="ob ob-dept" style="border-color:rgba(61,186,239,.35)">
+                  <div class="ob-t" style="color:var(--b);font-size:.58rem">แผนก Outbound</div>
+                  <div class="ob-s">ผจก. วีระวัฒน์ / ศศิวิมล</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov-b" style="height:14px"></div>
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Checker</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Loader</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 80 pax</div></div>
+              </div>
+
+              <!-- PR/Driver -->
+              <div class="flex-col">
+                <div class="ov-b" style="height:0"></div>
+                <div class="ob ob-dept" style="border-color:rgba(61,186,239,.35)">
+                  <div class="ob-t" style="color:var(--b);font-size:.58rem">แผนก PR · Driver</div>
+                  <div class="ob-s">ผจก. ศราวุฒิ เภตรา</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov-b" style="height:14px"></div>
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Planner</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:70px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Sorter</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 77 pax</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FRONT DIVISION -->
+          <div class="flex-col">
+            <div class="ov" style="height:0"></div>
+            <div class="ob ob-mgr" style="min-width:160px;border-color:rgba(201,168,76,.6);background:rgba(201,168,76,.1)">
+              <div class="ob-t" style="color:var(--g)">ผู้จัดการฝ่าย FRONT</div>
+              <div class="ob-s">เอกวัฒน์ ไชยสิทธิ์</div>
+              <div class="ob-lv">Level 2 · Division Mgr</div>
+            </div>
+            <div class="ov" style="height:20px"></div>
+
+            <!-- L3: Front Dept Managers x3 -->
+            <div style="display:flex;gap:6px;position:relative">
+              <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(201,168,76,.25)"></div>
+
+              <!-- PTL -->
+              <div class="flex-col">
+                <div class="ov" style="height:0"></div>
+                <div class="ob ob-dept">
+                  <div class="ob-t" style="color:var(--g);font-size:.58rem">แผนก PTL</div>
+                  <div class="ob-s">ผจก. อัญธิชา วรรณประเก</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov" style="height:14px"></div>
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Picker</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Control</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 236 pax</div></div>
+              </div>
+
+              <!-- PTT -->
+              <div class="flex-col">
+                <div class="ov" style="height:0"></div>
+                <div class="ob ob-dept">
+                  <div class="ob-t" style="color:var(--g);font-size:.58rem">แผนก PTT</div>
+                  <div class="ob-s">ผจก. เทวี / ศิรินาวา</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov" style="height:14px"></div>
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Picker</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Tote</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 243 pax</div></div>
+              </div>
+
+              <!-- PFC/FR -->
+              <div class="flex-col">
+                <div class="ov" style="height:0"></div>
+                <div class="ob ob-dept">
+                  <div class="ob-t" style="color:var(--g2);font-size:.58rem">แผนก PFC/FR</div>
+                  <div class="ob-s">ผจก. ณัฐกิตต์ จันที</div>
+                  <div class="ob-lv">Level 3</div>
+                </div>
+                <div class="ov" style="height:14px"></div>
+                <div style="display:flex;gap:4px">
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.FR Pick</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                  <div class="ob ob-sup" style="min-width:68px">
+                    <div class="ob-t" style="font-size:.5rem">หน.Damage</div><div class="ob-lv" style="font-size:.45rem">L4</div>
+                  </div>
+                </div>
+                <div class="ov" style="height:10px;background:rgba(255,255,255,.08)"></div>
+                <div class="ob ob-stf"><div class="ob-t" style="font-size:.5rem;color:var(--w3)">Staff 128 pax</div></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEPARATOR LINE -->
+      <div style="width:1px;background:rgba(255,255,255,.08);align-self:stretch;margin:0 8px"></div>
+
+      <!-- ====== RIGHT BRANCH: INVENTORY & SUPPORT ====== -->
+      <div class="flex-col" style="flex:1">
+        <div class="ob ob-inv" style="min-width:200px">
+          <div class="ob-t" style="color:var(--b)">รองผู้อำนวยการ Inventory</div>
+          <div class="ob-s">DC Inventory &amp; Support</div>
+          <div class="ob-lv">Level 1 · Deputy Director</div>
+        </div>
+        <div class="ov-b" style="height:24px"></div>
+
+        <!-- 4 Support departments -->
+        <div style="display:flex;gap:6px;position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(61,186,239,.2)"></div>
+
+          <!-- Inventory -->
+          <div class="flex-col">
+            <div class="ov-b" style="height:0"></div>
+            <div class="ob ob-dept" style="border-color:rgba(61,186,239,.3);min-width:100px">
+              <div class="ob-t" style="color:var(--b);font-size:.56rem">Inventory</div>
+              <div class="ob-s">ฝ่าย Inv.</div>
+              <div class="ob-lv">L2 Mgr×2</div>
+            </div>
+            <div class="ov-b" style="height:12px"></div>
+            <div style="display:flex;gap:3px">
+              <div class="ob ob-sup" style="min-width:44px"><div class="ob-t" style="font-size:.46rem">หน.×4</div></div>
+            </div>
+            <div class="ov" style="height:8px;background:rgba(255,255,255,.08)"></div>
+            <div class="ob ob-stf"><div class="ob-t" style="font-size:.48rem;color:var(--w3)">Staff</div></div>
+          </div>
+
+          <!-- Asset -->
+          <div class="flex-col">
+            <div class="ov-b" style="height:0"></div>
+            <div class="ob ob-dept" style="border-color:rgba(61,186,239,.3);min-width:100px">
+              <div class="ob-t" style="color:var(--b);font-size:.56rem">Asset Control</div>
+              <div class="ob-s">ฝ่าย Asset</div>
+              <div class="ob-lv">L2 Mgr×2</div>
+            </div>
+            <div class="ov-b" style="height:12px"></div>
+            <div style="display:flex;gap:3px">
+              <div class="ob ob-sup" style="min-width:44px"><div class="ob-t" style="font-size:.46rem">หน.×4</div></div>
+            </div>
+            <div class="ov" style="height:8px;background:rgba(255,255,255,.08)"></div>
+            <div class="ob ob-stf"><div class="ob-t" style="font-size:.48rem;color:var(--w3)">Staff</div></div>
+          </div>
+
+          <!-- Maintenance -->
+          <div class="flex-col">
+            <div class="ov-b" style="height:0"></div>
+            <div class="ob ob-dept" style="border-color:rgba(61,186,239,.3);min-width:100px">
+              <div class="ob-t" style="color:var(--b);font-size:.56rem">Maintenance</div>
+              <div class="ob-s">ฝ่าย Maint.</div>
+              <div class="ob-lv">L2 Mgr×2</div>
+            </div>
+            <div class="ov-b" style="height:12px"></div>
+            <div style="display:flex;gap:3px">
+              <div class="ob ob-sup" style="min-width:44px"><div class="ob-t" style="font-size:.46rem">หน.×4</div></div>
+            </div>
+            <div class="ov" style="height:8px;background:rgba(255,255,255,.08)"></div>
+            <div class="ob ob-stf"><div class="ob-t" style="font-size:.48rem;color:var(--w3)">Staff</div></div>
+          </div>
+
+          <!-- Return -->
+          <div class="flex-col">
+            <div class="ov-b" style="height:0"></div>
+            <div class="ob ob-dept" style="border-color:rgba(61,186,239,.3);min-width:100px">
+              <div class="ob-t" style="color:var(--b);font-size:.56rem">Return Goods</div>
+              <div class="ob-s">ฝ่าย Return</div>
+              <div class="ob-lv">L2 Mgr×2</div>
+            </div>
+            <div class="ov-b" style="height:12px"></div>
+            <div style="display:flex;gap:3px">
+              <div class="ob ob-sup" style="min-width:44px"><div class="ob-t" style="font-size:.46rem">หน.×4</div></div>
+            </div>
+            <div class="ov" style="height:8px;background:rgba(255,255,255,.08)"></div>
+            <div class="ob ob-stf"><div class="ob-t" style="font-size:.48rem;color:var(--w3)">Staff</div></div>
+          </div>
+
+        </div>
+
+        <!-- Legend -->
+        <div style="margin-top:24px;background:rgba(8,15,34,.8);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:14px 16px">
+          <div style="font-family:var(--fm);font-size:.58rem;color:var(--w3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Structure Legend</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:10px;height:10px;border-radius:2px;background:rgba(201,168,76,.3);border:1px solid var(--g)"></div><span style="font-family:var(--fm);font-size:.58rem;color:var(--w2)">Deputy Director / Division Mgr (Level 1–2)</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:10px;height:10px;border-radius:2px;background:rgba(61,186,239,.15);border:1px solid rgba(61,186,239,.4)"></div><span style="font-family:var(--fm);font-size:.58rem;color:var(--w2)">Dept Manager × 2 per Dept (Level 3)</span></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="width:10px;height:10px;border-radius:2px;background:rgba(8,15,34,.8);border:1px solid rgba(255,255,255,.1)"></div><span style="font-family:var(--fm);font-size:.58rem;color:var(--w2)">Section Head × 2–4 (Level 4) + Staff</span></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end flex-row L1 -->
+
+    </div><!-- end min-width -->
+    </div><!-- end full-org -->
+
   </div>
 </section>
 
@@ -992,7 +1406,7 @@ footer{
           <div class="ti-logo"><img src="1777147587941_image.png" alt="Sahakol"></div>
           <div class="ti-co">Sahakol Equipment (DD25)</div>
         </div>
-        <div class="ti-role">Warehouse Department Manager · ผู้จัดการฝ่ายคลังสินค้า</div>
+        <div class="ti-role">Warehouse Manager · ผู้จัดการคลังสินค้า</div>
         <div class="ti-tags"><span class="ti-tag n">SAP ERP</span><span class="ti-tag n">Oracle</span><span class="ti-tag n">Min/Max/ROP</span><span class="ti-tag n">Mining Industry</span></div>
         <div class="ti-desc">บริหารคลังอะไหล่และน้ำมันหล่อลื่นสำหรับธุรกิจเหมืองแร่และก่อสร้างโรงไฟฟ้า ใช้ SAP &amp; Oracle จัดทำ Org Chart, KPI Framework<br><br>Managed spare parts &amp; lubricant warehouse for mining &amp; power plant construction using SAP &amp; Oracle. Developed org structure and KPI optimization.</div>
       </div>
